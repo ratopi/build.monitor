@@ -5,7 +5,8 @@ const BuildListItem = React.createClass(
 		getInitialState: function ()
 		{
 			return {
-				"parameters": null
+				"parameters": null,
+				"build": null
 			};
 		},
 
@@ -21,7 +22,11 @@ const BuildListItem = React.createClass(
 			const handler =
 				function ( data )
 				{
-					console.log( data );
+					self.setState(
+						{
+							"build": data
+						}
+					);
 
 					if ( data.actions )
 					{
@@ -55,11 +60,12 @@ const BuildListItem = React.createClass(
 
 		"render": function ()
 		{
-			if ( this.state.parameters )
+			if ( this.state.parameters && this.state.build )
 			{
 				const parameterString = JSON.stringify( this.state.parameters );
+				const time = new Date(this.state.build.timestamp ).toISOString();
 				return (
-					<li>{this.props.build.number} {parameterString}</li>
+					<li>{this.props.build.number} {time} {this.state.build.result} {parameterString}</li>
 				);
 			}
 			else
