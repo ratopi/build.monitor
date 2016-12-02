@@ -60,9 +60,9 @@ const BuildListItem = React.createClass(
 
 		"render": function ()
 		{
-			if ( this.state.parameters && this.state.build )
+			if ( this.state.build )
 			{
-				const parameterString = JSON.stringify( this.state.parameters );
+				const parameterString = this.state.parameters ? JSON.stringify( this.state.parameters ) : "";
 				const time = new Date(this.state.build.timestamp ).toISOString();
 				return (
 					<li>{this.props.build.number} {time} {this.state.build.result} {parameterString}</li>
