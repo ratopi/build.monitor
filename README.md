@@ -1,6 +1,6 @@
 A small web app for monitoring Jobs in build system "Jenkins".
 
-# Deploy
+# Installation
 
 ## With GIT
 
